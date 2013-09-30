@@ -1,0 +1,1 @@
+This is a directory of class notes and coding examples from pluralsight.com

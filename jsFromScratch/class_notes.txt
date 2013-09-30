@@ -1,0 +1,96 @@
+Fundamentals of JavaScript
+- js only has one number type. 
+- strings appear between quotes
+- / is the escape character for strings
+- variables are created with: var nameOfVar
+- operators that work on two values are called binary operators (like +)
+- operators that work on one values are called unary operators
+- a statement is any set of expressions that has an impact on the rest of the program
+- all statements end in semicolons (as good practice)
+
+
+Program Flow
+- an if statment only controls one statement without a block
+- a while loop may never get run
+- a do while loop will always get run at least once
+- for loops have three arguments (assignment; test; increment/decrement)
+- the keyword break will end a loop and return control to the outer function
+- switch example:
+    switch(animal)
+    {
+      case "cat":
+        alert("meow");
+        break;
+      case "dog":
+      default:
+    }
+
+
+Truth
+- boolean values are limited to true and false
+- boolean operations and (&&), or (||), not (!)
+- falsy values: null, undefined,NaN,"",0
+- everything else is truthy
+- == follows evalutes truthy statements
+- === is strict. the compared values must be of the same type
+
+
+Functions
+- functions are created with: function nameOfFunction(params) {}
+- function example:
+    function add(x,y)
+    {
+      var z = x + y;
+      return z;
+    }
+- declare an anonymous function with: var name = function (params) {}
+- if a function returns without returning a value, the value is undefined
+- to output a value within html: idOfHtmlElement.innerHTML = value;
+- js supports "hoisting" order of function declaration is irrelevent
+- nested functions are in the scope of the outer function
+- braces do not create scope
+- functions are the only construct for defining scope within js
+- a variable that is not declared inside a function is a global variable
+- closure: a function is evaluated in the scope in which it was declared
+- recursion is when a function calls itself
+
+
+Objects and Collections
+- objects are collections of properties
+- you can add additional properties "on the fly"
+- non-existent properties return undefined
+- objects can have functions (called methods when defined within an object)
+- object example:
+    var dog = 
+    {
+      name: "Charlie",
+      breed: "Mix",
+      weight: 12,
+      color: "Brown"
+    };
+- attributes of objects can be assigned or accessed with: object.attribute
+- define an array: var array = []; or var array = [0,1,2,3]
+- arrays act as collections and are the only collection class in js
+- an arrays length is equal to the number of items in it: array.length
+- objects of different types can be stored in the same array: [0,"a",false,3]
+- arrays are zero offset (start at 0)
+- push adds a member to the end of an array
+- pop returns last value in array
+- for loops can iterate over an array
+- strings (literals) can use double or single quotes 'string' or "string"
+- if you use double quotes you can use singe quotes within it (or visa versa)
+- \n inserts a newline into a string (these are ignored within html)
+- + is used for concatentation
+- charAt(index): returns character at a particular index
+- indexOf(string): returns the index of the first occurance of a substring
+- split("character(s) to split on"): divides a string into an array
+- slice(begin,end): copies a piece of a string 
+- regular expressions can be used to find and/or manipulate parts of a string
+- myString.search(/regular expression here/)
+- [a-z] matches any letter
+- [0-9] matches any number
+- * matches any number of the previous regex matcher
+- {some_number} matches some_number of previous regex matcher
+- \b matches a word boundary
+- RegexBuddy, RegexLib are useful tools for writing regex
+
