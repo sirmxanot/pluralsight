@@ -7,6 +7,7 @@ Fundamentals of JavaScript
 - operators that work on one values are called unary operators
 - a statement is any set of expressions that has an impact on the rest of the program
 - all statements end in semicolons (as good practice)
+- http://plnkr.co/ is a good tool to help when writing js
 
 
 Program Flow

@@ -1,0 +1,173 @@
+HTTP Resources
+- URL: Uniform Resource Locator ex. http://food.com/recipe/grilled-cauliflower
+- pages, images, videos are all resources
+- http:// is the URL scheme
+- food.com is the host. the host resolves to a specific IP address
+- recipe/grilled-cauliflower is the URL path
+- IIS Interet Information Services is a webserve that can run on windows
+- :80 is the port number in the following: http://food.com:80/recipes/squash
+- :80 is the default port
+- http://bing.com/search?=jaboticaba where q=jaboticaba is the query
+- & is commonly used to delimit parameters: search?firstName=Scott&lastName=Wu
+- #Fragment: used on client-side only to specify a part of the resource
+- http://wikipedia.org/wiki/Jabuticaba#Description where #Description is a frag
+- unsafe URL chracters: space,#,^,etc
+- safe URL characters: [a-z],[A-Z],[0-9],$,-,_,.,+,*,',(,),,
+- you can represent unsafe ASCII characters with URL-encoding:
+    space - %20
+    !     - %21
+    "     - %22
+    #     - %23
+    $     - %24
+    %     - %25
+    &     - %26
+    reference: http://i-technica.com/whitestuff/urlencodechart.html
+- MIME (multipurpose internet mail extensions) 
+- MIME labels content so that the client knows what type the content is
+- Common MIME Types:
+    type/subtype            description
+    application/atom+xml    Atom feed
+    application/json        JSON data
+    image/gif               GIF image
+    image/png               PNG image
+    video/mp4               MP4 video
+    text/xml                XML
+    text/html               HTML
+    text/plain              Just text
+
+
+HTTP Messages
+- http is a request/ response protocol
+- a single http transaction is made up of an http request and an http response
+- common http methods:
+    method           description
+    GET              retrieve a resource
+    POST             update a resource
+    PUT              store a resource
+    DELETE           remove a resource
+    HEAD             retrieve the headers for a resource
+- html specifications only use GET and POST
+- PUT and DELETE are almost never used in web applications
+- safe http methods let you read and view resources from a web server
+- unsafe methods let you change resources on a web server
+- GET is safe
+- POST is unsafe
+- POST/Redirect/GET is a common pattern that helps avoid resubmitting a POST
+- http request messages: 
+    [method] [URL] [version]
+    [headers]
+    [body]
+- the Host: header is required
+- common request headers:
+    header              description
+    referer             the url of the referring page
+    user-agent          information about the browser         
+    accept              preferred media types
+    accept-language     preferred language
+    cookie              cookie information
+    if-modified-since   date of last retrieval
+    date                creation timestamp for the message
+- http response messages:
+    [version] [status] [reason]
+    [headers]
+    [body]
+- http response status codes:
+    range       category
+    100-199     informational
+    200-299     successful
+    300-399     redirection
+    400-499     client error
+    500-599     server error
+- common http resonse status codes:
+    range       reason                description
+    200         ok                    success!
+    301         moved permanently     resource moved, don't check here again
+    302         moved temporarily     resource moved, but check here again
+    304         not modified          resource not changed since last retrieval
+    400         bad request           bad syntax?
+    401         unauthorized          client might need to authenticate
+    403         forbidden             refused access
+    404         not found             resource doesn't exist
+    500         internal server error something went wrong during processing
+    503         service unavailable   server will not service the request
+- fidler is a web debugging proxy www.fiddler2.com
+- fidler logs all http(s) traffic between your computer and the internet
+
+
+HTTP Connections
+- http is an application layer protocol
+- application layer protocols allow two apps to communicate over the network
+- typical protocol layers (client):
+    layer           protocol
+    application     http
+    transport       tcp
+    network         ip
+    data link       ethernet
+- the server side protocol layers are the same, but reversed
+- tcp is responsible for error detection, flow control, overall reliability
+- ip takes information and moves it through routers and computers worldwide
+- ip requires computers to have an address (IP Address)
+- ip is responsible for breaking data into packets (datagrams)
+- in the ethernet layer, ip packets become frames
+- uri (uniform resource identifier) is more generic than url
+- wireshark allows you to view all information going across your network
+- tcp has a three step handshake between client and server
+- browsers can make parallel connections
+- too many connections will create network congestion
+
+
+HTTP Architecture
+- Architectural Styles and the Design of Network-based Software Architectures
+- look up the above disertation
+- a proxy server is a server that sits between a client and a server
+- proxies are transparent to users
+- proxy servers are used for load balancing
+- caching is used to reduce load on a server and to improve latency
+- there are two types of caching: public caching, private caching
+- public caches are used to store resources on a proxy server
+- private caches are used locally by a single user (in the browser)
+- the results of a GET request with a 200 response is usually cached
+- cache control headers:
+    directive     meaning
+    public        a response for everyone
+    private       a response for a single user
+    no-cache      don't cache the response
+    no-store      you never saw this response
+
+
+HTTP Security
+- http is a stateless protocol
+- every http message is independent of every other http request
+- saving state in a web application:
+    - embed state in the resources that are being transferred to the client
+    - store state on the server in a database or a session
+- website that want to track users often use cookies
+- cookies can identify users, but do not authenticate users
+- when a servers include a cookie in the response header of an http message
+- servers usually just set a GUID in the cookie:
+    Set-Cookie: GUID=00a48b7f6a4846a8ad;
+                domain= .searchengine.com;
+                path=/
+- a persistent cookie can outlive a browser session
+- persistent cookie made by adding expires= attribute to the Set-Cookie header
+- on the web, authentication is performed using a challenge/response format
+- forms authentication is the most popular type of authentication:
+    1) sends a 302 temporary redirect back to the client
+    2) 302 redirect includes Location: with the return url (original request)
+    3) login button for the form will submit post to the login destination
+    4) application takes supplied credentials and validates against db
+    5) server responds with a redirect back to the original redirect and cookie
+- forms auth is not secure unless you're using https
+- openID is decentralized authentication
+- https == ssl == tsl == secure http
+- https encrypts messages before sending them across the network
+- the defualt port for https is 443
+- https protocol stack:
+    layer           protocol
+    application     http
+    SSL/TLS         encryption
+    transport       tcp
+    network         ip
+    data link       ethernet
+- https is computationally expensive
+- https is impossible to cache in a public cache
