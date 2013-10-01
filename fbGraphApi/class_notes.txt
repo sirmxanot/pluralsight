@@ -1,0 +1,44 @@
+Understanding Graph API
+- API: Application Programming Interface
+- an API is an interface to the host operating system
+- the web has host systems too, one of which is facebook
+- web APIs give access to web host systems
+- web API: "A server-side web API is a programmatic interface to a defined request-response message system, typically expressed in JSON or XML, which is exposed via the web--most commonly by means of an HTTP-based web server." -Wikipedia
+- web API == web service == platform
+- graph API is facebook's request/response model for accessing all FB data
+- objects: people, pages, events, photos, create your own, + many more
+- open graph protocol can make anything on the web an object
+- GET https://graph.facebook.com/ojbect_id will return that object's attributes in JSON
+- many objects require a token to be passed in the url GET https://graph.facebook.com/ojbect_id?oauth_token=token
+- connections are a relationship between objects
+- connections: friends, likes, comments, interests, etc
+- append the connection type to the object get request: GET https://graph.facebook.com/ojbect_id/connection_type?oauth_token=token
+- GET https://graph.facebook.com/ojbect_id?metadata=1 will show you all the information that you can access for this object including connections
+- graph API is a RESTS CRUD API. it supports:
+      create    POST
+      read      GET
+      update    PUT
+      delete    DELETE
+
+
+Testing Your App
+- graph api explorer is an online tool to see what calls will return in the API
+- https://developers.facebook.com
+- 
+
+
+Understanding Facebook Auth
+- 
+
+
+Writing Your First App in JavaScript
+- 
+
+
+Playing With FQL
+- 
+
+
+Taking Your App Further
+- 
+
