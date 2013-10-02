@@ -1,0 +1,40 @@
+<html><body>
+<div id="fb-root"></div>
+<script>
+  //Additional JS functions here
+  window.fbAsyncInit = function() {
+    FB.init({
+      appID         : '123456789', //App ID
+      status        : true, //check login status
+      cookie        : true, //enable cookies. allows server session access
+      xfbml         : true // parse XFBML
+    });
+
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        alert("logged in");
+        // make you FB API calls here - app is authorized to make calls for user
+      } else if (response.status === 'not_authorized') {
+        alert("not authorized");
+        // user is logged into facebook but not authorized to use yoru app - authorize now
+        FB.login(function(response) {}, {scope: 'publish_stream'});
+      } else {
+        alert("not logged in: " + response.status);
+        // user is not logged into Facebook - log them in
+        FB.login(function(response) {}, {scope: 'publish_stream'});
+      }
+    });
+  };
+
+  // Load the SDK asynchronously
+  (function(d){
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.asynch = true;
+    js.src = "//connect.facebook.net/en_US.all.js";
+    ref.parentNode.insertBefore(js, ref);
+  }(document));
+</script>
+<p><a href="#" onclick="postit(); return false">Post it!</a></p>
+<p><a href="#" onclick="deleteit(); return false">Delete it!</a></p>
+</body></html>

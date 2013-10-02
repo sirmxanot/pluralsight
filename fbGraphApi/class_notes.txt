@@ -24,11 +24,20 @@ Understanding Graph API
 Testing Your App
 - graph api explorer is an online tool to see what calls will return in the API
 - https://developers.facebook.com
-- 
+- JavaScript Test Console is a fb tool to help with JS dev
+- FB App Dashboard
+- FB Insights Dashboard
+- you need to create test users because FB doesn't allow fake user accounts
+- search Test Users on developers.facebook.com
+- Access Token Tool
+- Access Token Debugger
+- Open Graph Debugger
 
 
 Understanding Facebook Auth
-- 
+- In order to use Facebook oauth direct the user to https://www.facebook.com/dialog/oauth?client_id={app-id}&redirect_uri={redirect-uri}
+- https://developers.facebook.com/docs/facebook-login/permissions/
+- types of permissions: profile, page, custom, open graph, admin, etc
 
 
 Writing Your First App in JavaScript
